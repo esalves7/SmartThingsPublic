@@ -589,6 +589,11 @@ private def parseCommandResponse(String description) {
 		} else if (eventSource == 2) {
 			desc = "manually"
 			responseMap.data = [ method: "manual" ]
+		} else if (eventSource == 3) {
+			def cardID = Integer.parseInt(data[3] + data[2], 16)
+			codeName = "cardId ${cardID}"
+			desc = "by rfid"
+			responseMap.data = [ method: "rfid" ]
 		}
 
 		switch (eventCode) {
